@@ -112,19 +112,6 @@ window.addEventListener("load", () => {
     document.body.style.display = "block";
   }, 0);
 });
-
-window.addEventListener("load", () => {
-  document.body.style.display = "none";
-  setTimeout(() => {
-    document.body.style.display = "block";
-  }, 0);
-});
-
-window.addEventListener("load", () => {
-  const preloader = document.getElementById("preloader");
-  preloader.style.display = "none"; // Nasconde il preloader
-});
-
 window.addEventListener("load", () => {
   document.body.classList.add("loaded");
 });
