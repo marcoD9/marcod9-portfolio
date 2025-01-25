@@ -1,0 +1,108 @@
+/* Stile generale della navbar */
+.navbar {
+    position: fixed;
+    bottom: -10px;
+    /* Posizionato sopra la linguetta */
+    right: 20px;
+    width: 200px;
+    /* Larghezza fissa */
+    height: 0;
+    /* Altezza iniziale */
+    background-color: var(--main-color);
+    overflow: hidden;
+    transition: height 0.5s ease;
+    border-radius: 10px 10px 0 0;
+    /* Bordo arrotondato in alto */
+    box-shadow: 0 -2px 5px var(--shadow-color)
+}
+
+/* Stile per la navbar quando è aperta */
+.navbar.open {
+    height: 200px;
+    /* Altezza espansa */
+}
+
+/* Stili per i link nella navbar */
+.navbar nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.navbar nav a {
+    padding: 10px;
+    text-decoration: none;
+    color: var(--closed-card-color);
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.navbar nav a:hover {
+    color: var(--underline-color);
+}
+
+/* Stile per la linguetta */
+.nav-tab {
+    position: fixed;
+    bottom: 0;
+    /* Sempre visibile */
+    right: 20px;
+    background-color: var(--closed-card-color);
+    color: white;
+    width: 200px;
+    /* Stessa larghezza della navbar */
+    height: 40px;
+    /* Altezza della linguetta */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px 10px 0 0;
+    /* Bordo arrotondato in alto */
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 -2px 5px var(--shadow-color);
+    transition: background-color 0.4s, transform 0.3s;
+    z-index: 20;
+}
+
+/* Effetto hover per la linguetta */
+.nav-tab:hover {
+    background-color: var(--main-color);
+}
+
+/* Media query per schermi con larghezza massima di 768px */
+@media screen and (max-width: 768px) {
+    .navbar {
+        width: 180px;
+        /* Riduciamo la larghezza della navbar */
+    }
+
+    .nav-tab {
+        width: 180px;
+        /* Riduciamo la larghezza della tab */
+    }
+}
+
+
+/* Media query per schermi con larghezza massima di 468px */
+@media screen and (max-width: 468px) {
+    .navbar {
+        width: 160px;
+        /* Riduciamo ulteriormente la larghezza */
+    }
+
+    .nav-tab {
+        width: 160px;
+    }
+}
+
+
+@media screen and (max-width: 280px) {
+
+    .navbar,
+    .nav-tab {
+        display: none;
+    }
+}

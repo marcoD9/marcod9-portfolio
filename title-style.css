@@ -1,0 +1,104 @@
+.name {
+    width: 100vw;
+    font-size: 2.7em;
+    margin: 0.5rem;
+    margin-bottom: 9em;
+    margin-top: 5em;
+    text-align: left;
+}
+
+.nome {
+    margin-left: 6em;
+    margin-bottom: 2rem;
+}
+
+.cognome {
+    margin-left: 8em;
+}
+
+@media screen and (max-width: 1040px) {
+    .name {
+        margin-bottom: 4em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .name {
+        font-size: 1.5em;
+        margin-bottom: 3em;
+    }
+
+    .nome {
+        margin-left: 6em;
+    }
+
+    .cognome {
+        margin-left: 8em;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .name {
+        font-size: 1.2em;
+        margin-bottom: 2em;
+    }
+
+    .nome {
+        margin-left: 4em;
+    }
+
+    .cognome {
+        margin-left: 6em;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .name {
+        margin-bottom: 2em;
+    }
+
+    .nome {
+        margin-left: 1em;
+    }
+
+    .cognome {
+        margin-left: 2em;
+    }
+}
+
+/*---Corner----*/
+.corner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    /* Altezza dinamica per coprire lo schermo */
+    background-color: var(--main-color);
+    /* Colore dell'angolo */
+    clip-path: polygon(50% 0, 100% 0, 100% 50%);
+    /* Triangolo base */
+}
+
+/* Per schermi più piccoli */
+@media (max-width: 768px) {
+    .corner {
+        clip-path: polygon(60% 0, 100% 0, 100% 60%);
+        /* Inizio più a destra */
+    }
+}
+
+@media (max-width: 480px) {
+    .corner {
+        clip-path: polygon(70% 0, 100% 0, 100% 70%);
+        /* Inizio ancora più a destra */
+    }
+}
+
+@media (max-width: 320px) {
+    .corner {
+        clip-path: polygon(80% 0, 100% 0, 100% 80%);
+        /* Angolo più piccolo */
+    }
+}

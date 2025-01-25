@@ -1,0 +1,104 @@
+/*Foto profilo e descrizione*/
+.my-profile {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 1rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+
+/* General Styles */
+.section {
+    padding: 1.1rem 0;
+    /* Adjust padding as needed */
+}
+
+/* Heading Styles */
+.section-title {
+    /* Replace with your desired font */
+    font-size: 2.3rem;
+    margin-bottom: 5rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 215px;
+    height: 3px;
+    background-color: var(--underline-color)
+        /* Customize underline color */
+}
+
+.profile-picture {
+    border-radius: 5px;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    box-shadow: 0px 2px 4px var(--shadow-color);
+    max-width: 100%;
+}
+
+
+/* Text Content Styling */
+.profile-text {
+    font-size: 1.1rem;
+    margin: 2em;
+    margin-left: 0;
+}
+
+/* Responsive Layout */
+@media screen and (max-width: 768px) {
+    .my-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-picture {
+        margin-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    .profile-text {
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        /* Replace with your desired font */
+        font-size: 24px;
+    }
+
+    .section-title::after {
+        width: 140px;
+
+    }
+}
+
+
+@media screen and (max-width: 468px) {
+    .profile-picture {
+        width: 40vw;
+        height: 30vh;
+    }
+
+    .profile-text {
+        font-size: 0.8rem;
+
+    }
+
+    .section-title {
+        /* Replace with your desired font */
+        font-size: 18px;
+    }
+
+    .section-title::after {
+        width: 105px;
+
+    }
+}
