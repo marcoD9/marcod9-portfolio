@@ -26,6 +26,7 @@ if (navTab) {
 }
 // Aggiungi un event listener al documento per chiudere la navbar se clicchi fuori
 document.addEventListener("click", closeNav);
+
 //------------------Progetti---------------------------//////////////
 // Seleziona tutte le card
 const cards = document.querySelectorAll(".card");
@@ -55,6 +56,7 @@ cards.forEach((card) => {
 document.addEventListener("click", () => {
   cards.forEach((card) => card.classList.remove("open"));
 });
+
 //-----------Animazioni----------/////////////
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".section");
@@ -74,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sections.forEach((section) => observer.observe(section));
 });
+
 //Fix rendering on mobile devices//
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".section");
@@ -96,6 +99,30 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Gestione del comportamento di scorrimento con offset
+document.addEventListener("DOMContentLoaded", () => {
+  // Seleziona tutti i link della navbar che puntano a sezioni interne
+  const navLinks = document.querySelectorAll('a[href^="#"]');
+
+  // Aggiungi un evento click su ogni link della navbar
+  navLinks.forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault(); // Impedisce il comportamento di navigazione predefinito
+
+      const targetId = this.getAttribute("href").substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        // Aggiungi un offset di 50px
+        window.scrollTo({
+          top: targetElement.offsetTop - 50,
+          behavior: "smooth", // Scorrimento fluido
+        });
+      }
+    });
+  });
+});
+
 window.addEventListener("load", () => {
   // Aggiungi opacità alle immagini e ai video
   document.querySelectorAll(".logos img, .card video").forEach((el) => {
@@ -106,12 +133,14 @@ window.addEventListener("load", () => {
   // Aggiungi la classe loaded
   document.body.classList.add("loaded");
 });
+
 window.addEventListener("load", () => {
   document.body.style.display = "none";
   setTimeout(() => {
     document.body.style.display = "block";
   }, 0);
 });
+
 window.addEventListener("load", () => {
   document.body.classList.add("loaded");
 });
