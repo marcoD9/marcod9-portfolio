@@ -1,100 +1,144 @@
-.contact {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    /* Allinea gli elementi a sinistra */
-    gap: 3rem;
-    margin: 1rem;
-    padding: 1rem;
-    border: none;
-    /* Rimuove il bordo */
-    box-shadow: none;
-    /* Rimuove l'ombra della card */
-    width: 50vw;
-    /* Mantieni la larghezza della sezione */
+/* Impostazioni generali */
+.background {
+    position: relative;
     min-height: 100vh;
-    /* Rende il contenitore almeno alto quanto la finestra */
-    margin-bottom: -40vh;
-    /* Centra senza spazi extra */
 }
 
-.contact img {
+/* Linguetta tonda con 3 linee */
+.contact-tab {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+.contact-tab-button {
+    background-color: #333;
+    color: var(--main-color);
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     width: 40px;
     height: 40px;
-    transition: transform 0.3s ease;
-    /* Aggiungi una transizione */
 }
 
-.contact img:hover {
-    transform: scale(1.1);
-    /* Ingrandisce l'immagine al passaggio del mouse */
+.contact-tab-button:hover {
+    background-color: #555;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--main-color);
+    ;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Sezione dei contatti inizialmente nascosta */
+.contact {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 10px;
+    background-color: var(--main-color);
+    ;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    z-index: 999;
+}
+
+.contact.open {
+    display: block;
+    background-color: #333;
+}
+
+.contact p {
+    margin: 10px 0;
 }
 
 .contact a {
-    font-size: 30px;
     text-decoration: none;
-    /* Rimuove la sottolineatura */
     color: inherit;
-    /* Mantieni il colore del testo originale */
 }
 
-/*-------------------------------------------------*/
-
-@media (min-width: 320px) and (max-width: 767px) {
-    .contact p {
-        margin-top: -1rem;
-        margin-bottom: 1rem;
-    }
-
-    .contact img {
-        margin-bottom: 2rem;
-    }
+.contact svg {
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
-@media (min-width: 768px) {
-    .contact p {
-        margin-top: -2rem;
-        margin-bottom: 2rem;
-    }
-
-    .contact img {
-        margin-bottom: 10rem;
-    }
+.contact img {
+    width: 30px;
+    /* Riduci la dimensione dell'immagine */
+    height: 30px;
+    /* ... altri stili */
 }
 
-@media (min-width: 1024px) {
-    .contact p {
-        margin-top: -2rem;
-        margin-bottom: 2rem;
-    }
-
-    .contact img {
-        margin-bottom: 20rem;
-    }
+.contact:hover img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-/*---------------------------------------------------*/
+
+/* Responsività - Adattamenti per dispositivi mobili */
 @media (max-width: 768px) {
+
+    /* Linguetta: Ridurre la dimensione sui dispositivi più piccoli */
+    .contact-tab-button {
+        width: 35px;
+        height: 35px;
+        padding: 10px;
+    }
+
+    .bar {
+        width: 20px;
+        height: 2px;
+    }
+
+    /* La sezione contatti si adatta alla larghezza dello schermo */
     .contact {
-        flex-direction: column;
-        /* Disposizione in colonna */
-        gap: 1rem;
-        /* Riduci lo spazio tra gli elementi */
-        width: 100%;
-        /* Occupa tutta la larghezza disponibile */
+        width: 200px;
+        top: 50px;
+        /* Aggiustiamo la posizione in modo che non si sovrapponga */
     }
+}
 
+@media (max-width: 480px) {
 
-    .contact img {
+    /* Linguetta: Ulteriore riduzione della dimensione per schermi più piccoli */
+    .contact-tab-button {
         width: 30px;
-        /* Riduci la dimensione dell'immagine */
         height: 30px;
-        /* ... altri stili */
+        padding: 8px;
     }
 
-    .contact a {
-        font-size: 24px;
-        /* Riduci la dimensione del font */
-        /* ... altri stili */
+    .bar {
+        width: 18px;
+        height: 2px;
+    }
+
+    /* Sezione contatti più piccola per schermi molto stretti */
+    .contact {
+        width: 180px;
+        top: 45px;
+    }
+}
+
+@media (max-width: 320px) {
+    .contact {
+        width: 140px;
+        top: 45px;
+        font-size: 10px;
+        padding-left: 6px;
     }
 }
