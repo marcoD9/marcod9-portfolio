@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
   sections.forEach((section) => observer.observe(section));
 });
 
-//Fix rendering on mobile devices//
+//Fix rendering su dispositivi mobili//
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".section");
   const observer = new IntersectionObserver(
@@ -143,4 +143,26 @@ window.addEventListener("load", () => {
 
 window.addEventListener("load", () => {
   document.body.classList.add("loaded");
+});
+
+// Riferimenti agli elementi
+const contactButton = document.querySelector(".contact-tab-button");
+const contactSection = document.querySelector(".contact");
+const backgroundDiv = document.querySelector(".background");
+
+// Mostra/nasconde la sezione dei contatti al clic del bottone
+contactButton.addEventListener("click", function (event) {
+  contactSection.classList.toggle("open");
+  event.stopPropagation(); // Previene la propagazione dell'evento clic
+});
+
+// Chiudi la sezione se clicchi fuori
+document.addEventListener("click", function (event) {
+  // Se il clic non è all'interno del contactButton o della contactSection, chiudiamo il menu
+  if (
+    !contactButton.contains(event.target) &&
+    !contactSection.contains(event.target)
+  ) {
+    contactSection.classList.remove("open");
+  }
 });
