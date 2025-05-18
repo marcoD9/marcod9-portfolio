@@ -129,9 +129,15 @@
           <!-- Pokedex-App -->
           <div id="pokedex" class="card">
             <img src="../Files/react-logo.png" alt="React Logo" />
-            <video utoplay loop muted width="369" height="462">
-              <source src="../Files/Pokedex.mp4" type="video/mp4" />
-            </video>
+            <div id="pokedex-video-container" class="video-wrapper">
+              <video
+                id="pokedex-video"
+                autoplay
+                loop
+                muted
+                src="../Files/Pokedex.mp4"
+              ></video>
+            </div>
             <p class="video-description">
               A simple mobile App built with React Native, Expo and NativeWind.
               It allows users to view Pokémon details. The app uses the PokeAPI

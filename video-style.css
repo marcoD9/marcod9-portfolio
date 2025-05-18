@@ -161,3 +161,41 @@
     margin: 1rem auto;
   }
 }
+/* --------------------------Stili per Pokedex ----------------------------------------*/
+
+/* Stili per il contenitore del video della Pokedex quando la card è aperta */
+#pokedex-component.card.open #pokedex-video-container {
+  width: 369px;
+  height: 462px;
+  overflow: hidden;
+  margin: 1rem auto;
+  border-radius: 5px;
+}
+
+/* Stili per il video della Pokedex quando la card è aperta */
+#pokedex-component.card.open #pokedex-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+#pokedex-component.card.open img {
+  display: none;
+}
+
+#pokedex-component.card video {
+  display: none;
+}
+
+#pokedex-component.card.open video {
+  display: block;
+}
+
+#pokedex-component.card p.video-description {
+  display: none;
+}
+
+#pokedex-component.card.open p.video-description {
+  display: block;
+}
