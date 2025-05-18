@@ -82,6 +82,12 @@
     object-fit: cover;
 }
 
+ /* Stili specifici per il video della Pokedex App */
+ #pokedex.card.open video {
+      width: 45%; /* Riduci la larghezza del video Pokedex */
+      max-height: 40vh; /* Riduci l'altezza massima del video Pokedex */
+ }
+
 /* Testo */
 .card p {
     width: 90%;
@@ -149,10 +155,14 @@
         width: 90%;
         /* Video più grande su schermi piccoli */
     }
-
+     
+      #pokedex.card.open video {
+          width: 60%; 
+          max-height: 30vh;
+      }
     .card p {
         width: 100%;
-        /* Testo a larghezza piena */
+      
     }
 }
 
@@ -161,5 +171,9 @@
         width: 95%;
         margin: 1rem auto;
     }
-
-}
+      
+      #pokedex.card.open video {
+          width: 80%; 
+          max-height: 25vh; 
+      }
+ }
