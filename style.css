@@ -1,60 +1,62 @@
 html,
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    min-width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-width: 100%;
 }
 
 body {
-    --main-color: hsl(42, 38%, 95%);
-    --closed-card-color: hsla(207, 44%, 10%, 0.699);
-    --underline-color: hsla(206, 71%, 52%, 0.801);
-    --shadow-color: hsl(0, 10%, 8%);
-    box-sizing: border-box;
-    font-optical-sizing: auto;
-    font-family: Georgia, serif;
-    font-size: clamp(0.7rem, 1.3vw, 1rem);
-    max-width: 100%;
-    color: var(--main-color)
+  --main-color: hsl(60, 1.4%, 14.3%);
+  --underline-color: rgb(16, 123, 75);
+  --shadow-color: hsl(0, 10%, 8%);
+  --background-color: rgb(234, 160, 49);
+  --secondary-color: rgb(207, 205, 191);
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.9rem;
+  color: var(--main-color);
+  line-height: 1.7;
 }
 
 .background {
-    min-height: 100%;
-    min-width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(45deg, rgba(60, 24, 192, 0.336) 0%, rgba(225, 5, 34, 0) 70%) repeat scroll 0% 0%,
-        linear-gradient(135deg, rgb(63, 62, 62) 10%, rgba(71, 50, 150, 0.916) 80%) repeat scroll 0% 0%,
-        linear-gradient(225deg, rgba(20, 32, 58, 0.17) 10%, rgba(10, 219, 216, 0) 80%) repeat scroll 0% 0%,
-        rgba(0, 0, 0, 0) linear-gradient(315deg, rgb(68, 26, 81) 100%, rgba(0, 2, 0, 0) 70%) repeat scroll 0% 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--background-color);
 }
-
 /*Animazioni*/
 .section {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease, transform 1s ease;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 .section.visible {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .visible {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/*Fixed cards and logos rendering on mobile devices*/
 body {
-    opacity: 0;
-    transition: opacity 0.5s ease-in;
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
 }
 
 body.loaded {
-    opacity: 1;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  body {
+    line-height: 1.3;
+  }
 }

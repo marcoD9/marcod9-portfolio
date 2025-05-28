@@ -3,23 +3,29 @@
 /* https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
 
 html {
-    box-sizing: border-box;
-    font-family: helvetica;
-    min-height: 100vh;
-    min-width: 100vw;
+  box-sizing: border-box;
+  font-family: helvetica;
+  min-height: 100vh;
+  height: auto;
+  min-width: 100vw;
+}
 
+body {
+  min-height: 100vh; /* Se vuoi che il body sia almeno alto come il viewport */
+  height: auto; /* Cruciale: permette al body di crescere */
+  overflow-x: hidden;
 }
 
 .background {
-    width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 *,
 *:before,
 *:after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 /* Default margins */
@@ -40,26 +46,23 @@ h5,
 h6,
 ul,
 li {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 ul,
 li {
-    list-style: none;
+  list-style: none;
 }
-
-
-
 
 /* https://css-tricks.com/the-focus-visible-trick/ */
 
 :focus:not(:focus-visible) {
-    outline: none;
+  outline: none;
 }
 
 /* ⚠️ Don't edit this file. ⚠️  */

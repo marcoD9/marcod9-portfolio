@@ -1,31 +1,31 @@
 .certificate {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .certificate img {
-    max-width: 60%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
+  display: block;
+  margin: 0 auto;
+  height: 80%;
+  width: 80%;
 }
-
-.certificate {
-    padding: 20px;
-}
-
-
 
 .certificate:hover img {
-    transform: scale(1.1);
-    transition: transform 0.3s ease-in-out;
-    /* Aggiungi la transizione */
+  transform: scale(1.03);
+  transition: transform 0.3s ease-in-out;
 }
 
-@media (max-width: 768px) {
-    .certificate img {
-        max-width: 90%
-    }
+@media screen and (max-width: 768px) {
+  .certificate img {
+    height: 50%;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .certificate img {
+    height: 60%;
+    width: 60%;
+  }
 }

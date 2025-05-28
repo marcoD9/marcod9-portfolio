@@ -1,108 +1,47 @@
-/* Stile generale della navbar */
-.navbar {
-    position: fixed;
-    bottom: -10px;
-    /* Posizionato sopra la linguetta */
-    right: 20px;
-    width: 200px;
-    /* Larghezza fissa */
-    height: 0;
-    /* Altezza iniziale */
-    background-color: var(--main-color);
-    overflow: hidden;
-    transition: height 0.5s ease;
-    border-radius: 10px 10px 0 0;
-    /* Bordo arrotondato in alto */
-    box-shadow: 0 -2px 5px var(--shadow-color)
+.navigation-section {
+  display: grid;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 3rem;
+  grid-template-areas: "home projects about";
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  background-color: var(--secondary-color);
+  text-align: center; /* Allinea il testo al centro */
 }
 
-/* Stile per la navbar quando è aperta */
-.navbar.open {
-    height: 200px;
-    /* Altezza espansa */
+a:active {
+  color: var(--underline-color);
 }
 
-/* Stili per i link nella navbar */
-.navbar nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+/* Seleziona specificamente il link "Home" */
+.home-link {
+  grid-area: home;
+  color: var(--main-color);
+  text-decoration: none;
+  border: solid black;
+  padding: 0.5rem;
+  border-width: 2px 1px 2px 2px; /* Per avere 2px nel bordo condiviso */
 }
 
-.navbar nav a {
-    padding: 10px;
-    text-decoration: none;
-    color: var(--closed-card-color);
-    font-size: 16px;
-    transition: color 0.3s;
+/* Seleziona specificamente il link "Projects" */
+.projects-link {
+  grid-area: projects;
+  color: var(--main-color);
+  text-decoration: none;
+  border: solid black;
+  padding: 0.5rem;
+  border-width: 2px 1px 2px 1px;
 }
 
-.navbar nav a:hover {
-    color: var(--underline-color);
-}
-
-/* Stile per la linguetta */
-.nav-tab {
-    position: fixed;
-    bottom: 0;
-    /* Sempre visibile */
-    right: 20px;
-    background-color: var(--closed-card-color);
-    color: white;
-    width: 200px;
-    /* Stessa larghezza della navbar */
-    height: 40px;
-    /* Altezza della linguetta */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px 10px 0 0;
-    /* Bordo arrotondato in alto */
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    box-shadow: 0 -2px 5px var(--shadow-color);
-    transition: background-color 0.4s, transform 0.3s;
-    z-index: 20;
-}
-
-/* Effetto hover per la linguetta */
-.nav-tab:hover {
-    background-color: var(--main-color);
-}
-
-/* Media query per schermi con larghezza massima di 768px */
-@media screen and (max-width: 768px) {
-    .navbar {
-        width: 180px;
-        /* Riduciamo la larghezza della navbar */
-    }
-
-    .nav-tab {
-        width: 180px;
-        /* Riduciamo la larghezza della tab */
-    }
-}
-
-
-/* Media query per schermi con larghezza massima di 468px */
-@media screen and (max-width: 468px) {
-    .navbar {
-        width: 160px;
-        /* Riduciamo ulteriormente la larghezza */
-    }
-
-    .nav-tab {
-        width: 160px;
-    }
-}
-
-
-@media screen and (max-width: 280px) {
-
-    .navbar,
-    .nav-tab {
-        display: none;
-    }
+/* Seleziona specificamente il link "About Me" */
+.about-link {
+  grid-area: about;
+  color: var(--main-color);
+  text-decoration: none;
+  border: solid black;
+  padding: 0.5rem;
+  border-width: 2px 2px 2px 1px;
 }

@@ -1,63 +1,6 @@
 "use strict";
-//-------------------------NavBar-----------------//
-// Seleziona gli elementi della navbar e della linguetta
-const navbar = document.querySelector("#myNav");
-const navTab = document.querySelector("#navToggle");
-// Funzione per alternare lo stato della navbar
-function toggleNav() {
-  if (navbar) {
-    navbar.classList.toggle("open");
-  } else {
-    console.error("Elemento #myNav non trovato");
-  }
-}
-// Funzione per chiudere la navbar se clicchi fuori
-function closeNav(event) {
-  if (!navbar.contains(event.target) && !navTab.contains(event.target)) {
-    // Chiudi la navbar se il clic è fuori dalla navbar e dalla linguetta
-    navbar.classList.remove("open");
-  }
-}
-// Aggiungi un event listener alla linguetta per alternare la navbar
-if (navTab) {
-  navTab.addEventListener("click", toggleNav);
-} else {
-  console.error("Elemento #navToggle non trovato");
-}
-// Aggiungi un event listener al documento per chiudere la navbar se clicchi fuori
-document.addEventListener("click", closeNav);
 
-//------------------Progetti---------------------------//////////////
-// Seleziona tutte le card
-const cards = document.querySelectorAll(".card");
-
-// Aggiungi evento click a ogni card
-cards.forEach((card) => {
-  card.addEventListener("click", (e) => {
-    // Chiude i link in modo che non aprano nuove pagine
-    if (e.target.tagName === "A") return;
-
-    // Chiudi tutte le altre card
-    cards.forEach((otherCard) => {
-      if (otherCard !== card) {
-        otherCard.classList.remove("open");
-      }
-    });
-
-    // Alterna lo stato "open" per la card corrente
-    card.classList.toggle("open");
-
-    // Ferma la propagazione dell'evento
-    e.stopPropagation();
-  });
-});
-
-// Chiudi la card se si clicca fuori
-document.addEventListener("click", () => {
-  cards.forEach((card) => card.classList.remove("open"));
-});
-
-//-----------Animazioni----------/////////////
+//-----------Animazioni----------//
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".section");
 
@@ -77,29 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   sections.forEach((section) => observer.observe(section));
 });
 
-//Fix rendering su dispositivi mobili//
-document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll(".section");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-  // Controlla manualmente se gli elementi sono già visibili al caricamento
-  sections.forEach((section) => {
-    if (section.getBoundingClientRect().top < window.innerHeight) {
-      section.classList.add("visible");
-    }
-    observer.observe(section);
-  });
-});
-
-// Gestione del comportamento di scorrimento con offset
+//------------Gestione navigazione con la navbar----------//
 document.addEventListener("DOMContentLoaded", () => {
   // Seleziona tutti i link della navbar che puntano a sezioni interne
   const navLinks = document.querySelectorAll('a[href^="#"]');
@@ -123,12 +44,107 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+//-----------Gestione delle frecce per lo scroll orizzontale delle cards----------//
+document.addEventListener("DOMContentLoaded", () => {
+  const cardsWrapper = document.querySelector(".cards-wrapper");
+  const leftArrow = document.querySelector(".left-arrow");
+  const rightArrow = document.querySelector(".right-arrow");
+
+  if (!cardsWrapper || !leftArrow || !rightArrow) {
+    console.error(
+      "ERRORE: Uno o più elementi DOM essenziali non sono stati trovati."
+    );
+    return;
+  }
+
+  // Calcolo della quantità di scroll per ogni clic
+  let scrollAmount = cardsWrapper.clientWidth;
+
+  // Event Listener per la freccia SINISTRA
+  leftArrow.addEventListener("click", () => {
+    cardsWrapper.scrollBy({
+      left: -scrollAmount, // Scorri a sinistra della larghezza esatta di una card
+      behavior: "smooth",
+    });
+  });
+
+  // Event Listener per la freccia DESTRA
+  rightArrow.addEventListener("click", () => {
+    cardsWrapper.scrollBy({
+      left: scrollAmount, // Scorri a destra della larghezza esatta di una card
+      behavior: "smooth",
+    });
+  });
+
+  // Logica per abilitare/disabilitare le frecce in base alla posizione di scroll
+  const updateArrowVisibility = () => {
+    // Disabilita freccia sinistra se all'inizio dello scroll
+    if (cardsWrapper.scrollLeft <= 5) {
+      leftArrow.disabled = true;
+      leftArrow.style.opacity = "0.5";
+      leftArrow.style.cursor = "not-allowed";
+    } else {
+      leftArrow.disabled = false;
+      leftArrow.style.opacity = "1";
+      leftArrow.style.cursor = "pointer";
+    }
+
+    // Disabilita freccia destra se alla fine dello scroll
+    // Usiamo Math.round per gestire possibili differenze di pixel dovute all'arrotondamento
+    if (
+      Math.round(cardsWrapper.scrollLeft + cardsWrapper.clientWidth) >=
+      cardsWrapper.scrollWidth - 5
+    ) {
+      rightArrow.disabled = true;
+      rightArrow.style.opacity = "0.5";
+      rightArrow.style.cursor = "not-allowed";
+    } else {
+      rightArrow.disabled = false;
+      rightArrow.style.opacity = "1";
+      rightArrow.style.cursor = "pointer";
+    }
+  };
+
+  cardsWrapper.addEventListener("scroll", updateArrowVisibility);
+
+  // Re-calcola scrollAmount quando la finestra viene ridimensionata
+  window.addEventListener("resize", () => {
+    scrollAmount = cardsWrapper.clientWidth;
+    updateArrowVisibility(); // Aggiorna anche la visibilità delle frecce
+  });
+
+  // Inizializza lo stato delle frecce al caricamento della pagina
+  updateArrowVisibility();
+});
+
+//-----Fix rendering su dispositivi mobili-------//
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".section");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  // Controlla manualmente se gli elementi sono già visibili al caricamento
+  sections.forEach((section) => {
+    if (section.getBoundingClientRect().top < window.innerHeight) {
+      section.classList.add("visible");
+    }
+    observer.observe(section);
+  });
+});
+
+//-------Gestione del caricamento delle immagini e dei video------//
 window.addEventListener("load", () => {
   // Aggiungi opacità alle immagini e ai video
-  document.querySelectorAll(".logos img, .card video").forEach((el) => {
+  document.querySelectorAll(".card video").forEach((el) => {
     el.style.opacity = 1;
   });
-  // Rimuovi il display none (se necessario)
   document.body.style.display = "block";
   // Aggiungi la classe loaded
   document.body.classList.add("loaded");
@@ -143,26 +159,4 @@ window.addEventListener("load", () => {
 
 window.addEventListener("load", () => {
   document.body.classList.add("loaded");
-});
-
-// Riferimenti agli elementi
-const contactButton = document.querySelector(".contact-tab-button");
-const contactSection = document.querySelector(".contact");
-const backgroundDiv = document.querySelector(".background");
-
-// Mostra/nasconde la sezione dei contatti al clic del bottone
-contactButton.addEventListener("click", function (event) {
-  contactSection.classList.toggle("open");
-  event.stopPropagation(); // Previene la propagazione dell'evento clic
-});
-
-// Chiudi la sezione se clicchi fuori
-document.addEventListener("click", function (event) {
-  // Se il clic non è all'interno del contactButton o della contactSection, chiudiamo il menu
-  if (
-    !contactButton.contains(event.target) &&
-    !contactSection.contains(event.target)
-  ) {
-    contactSection.classList.remove("open");
-  }
 });

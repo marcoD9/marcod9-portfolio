@@ -1,0 +1,122 @@
+.title-container {
+  margin: 8rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(207, 205, 191),
+    rgb(207, 206, 201),
+    rgb(251, 251, 251)
+  );
+  width: 100vw;
+  height: auto; /* Permette al contenitore di adattarsi all'altezza del contenuto */
+  padding: 1rem 0;
+  box-sizing: border-box; /* Importante per includere padding nei calcoli di larghezza/altezza */
+}
+
+/* Immagine */
+.image-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end; /* Mantiene l'immagine a destra nel suo wrapper */
+  width: auto; /* Permette al wrapper di adattarsi all'immagine */
+}
+
+.profile-picture {
+  object-fit: cover;
+  border-radius: 50px;
+  margin-right: 1rem;
+  /* Sizing responsive per schermi grandi */
+  width: clamp(
+    150px,
+    30vw,
+    300px
+  ); /* Min 150px, fluido 30% della viewport width, Max 300px */
+  height: clamp(150px, 30vw, 300px);
+  max-width: 100%; /* Assicura che non fuoriesca dal suo container immediato */
+  display: block; /* Importante per eliminare lo spazio sotto l'immagine se fosse inline */
+}
+
+/* Testo */
+.home-text {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Allinea a sinistra */
+  justify-content: center; /* Centra verticalmente il testo nel suo spazio */
+  text-align: left; /* Allinea il testo effettivo a sinistra */
+  padding-left: 0.5rem; /* Indentazione del testo */
+}
+
+.name {
+  font-size: 2.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.introduction {
+  font-size: 1.1rem;
+  margin-left: 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .profile-picture {
+    width: clamp(120px, 40vw, 250px);
+    height: clamp(120px, 40vw, 250px);
+    margin-right: 0.5rem;
+  }
+
+  .profile-picture {
+    border-radius: 25px;
+  }
+
+  .introduction {
+    font-size: 0.9rem;
+  }
+
+  .name {
+    margin-top: 0;
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 576px) {
+  .title-container {
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    margin: 5rem 0 3rem 0;
+    padding: 1.5rem 0;
+  }
+
+  .image-wrapper {
+    width: 100%;
+    justify-content: center;
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 0;
+  }
+
+  .home-text {
+    margin-top: 0;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .introduction {
+    font-size: 0.8rem;
+  }
+  .name {
+    font-size: 14px;
+  }
+}
