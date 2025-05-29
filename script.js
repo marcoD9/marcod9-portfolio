@@ -1,25 +1,4 @@
 "use strict";
-
-//-----------Animazioni----------//
-document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll(".section");
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible"); // Aggiunge la classe quando l'elemento è visibile
-        } else {
-          entry.target.classList.remove("visible"); // Rimuove la classe quando l'elemento non è più visibile
-        }
-      });
-    },
-    { threshold: 0.15 } // 15% dell'elemento visibile
-  );
-
-  sections.forEach((section) => observer.observe(section));
-});
-
 //------------Gestione navigazione con la navbar----------//
 document.addEventListener("DOMContentLoaded", () => {
   // Seleziona tutti i link della navbar che puntano a sezioni interne
@@ -113,27 +92,5 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".card video").forEach((el) => {
       el.style.opacity = 1;
     });
-  });
-});
-
-//-----Fix rendering su dispositivi mobili (IntersectionObserver)-------//
-document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll(".section");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-  // Controlla manualmente se gli elementi sono già visibili al caricamento
-  sections.forEach((section) => {
-    if (section.getBoundingClientRect().top < window.innerHeight) {
-      section.classList.add("visible");
-    }
-    observer.observe(section);
   });
 });
