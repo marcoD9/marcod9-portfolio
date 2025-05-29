@@ -58,12 +58,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let scrollAmount = 0; // Inizializza a 0, verrà aggiornato dopo il caricamento
 
   // Event Listener per la freccia SINISTRA
-  leftArrow.addEventListener("click", () => {
+  leftArrow.addEventListener("click", (e) => {
+    e.stopPropagation(); // Per evitare che il video venga riprodotto (bug su mobile)
     cardsWrapper.scrollBy({ left: -scrollAmount, behavior: "smooth" });
   });
 
   // Event Listener per la freccia DESTRA
-  rightArrow.addEventListener("click", () => {
+
+  rightArrow.addEventListener("click", (e) => {
+    e.stopPropagation();
     cardsWrapper.scrollBy({ left: scrollAmount, behavior: "smooth" });
   });
 
