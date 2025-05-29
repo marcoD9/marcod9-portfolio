@@ -6,6 +6,30 @@ body {
   min-width: 100%;
 }
 
+body {
+  --main-color: hsl(60, 1.4%, 14.3%);
+  --underline-color: rgb(16, 123, 75);
+  --shadow-color: hsl(0, 10%, 8%);
+  --background-color: rgb(234, 160, 49);
+  --secondary-color: rgb(207, 205, 191);
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.9rem;
+  color: var(--main-color);
+  line-height: 1.7;
+}
+
+.background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--background-color);
+}
+
 /*Animazioni*/
 .section {
   opacity: 0;
@@ -32,30 +56,6 @@ body {
 body.loaded {
   display: block; /* Assicurati che il body sia visibile */
   opacity: 1;
-}
-
-body {
-  --main-color: hsl(60, 1.4%, 14.3%);
-  --underline-color: rgb(16, 123, 75);
-  --shadow-color: hsl(0, 10%, 8%);
-  --background-color: rgb(234, 160, 49);
-  --secondary-color: rgb(207, 205, 191);
-  box-sizing: border-box;
-  font-family: "Lato", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 0.9rem;
-  color: var(--main-color);
-  line-height: 1.7;
-}
-
-.background {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: var(--background-color);
 }
 
 @media (max-width: 768px) {
