@@ -5,7 +5,7 @@
   align-items: center;
   box-sizing: border-box;
   border-radius: 25px;
-  padding: 0 50px; // Larghezza freccia + 10px di padding
+  padding: 0 2rem;
   position: relative;
 }
 
@@ -44,13 +44,13 @@
   color: white;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1rem;
   opacity: 1;
   transition: opacity 0.3s ease;
   z-index: 10;
@@ -69,36 +69,17 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 .left-arrow {
-  left: 0;
+  padding: 0.5rem;
+  left: 0rem;
 }
 
 .right-arrow {
-  right: 0;
+  padding: 0.5rem;
+  right: 0rem;
 }
 /* Responsive */
 @media and (max-width: 768px) {
-  .horizontal-scroll-container {
-    padding: 0 30px; /* Meno padding sui lati per mobile */
-  }
   .cards-wrapper {
     height: 70vh;
-  }
-
-  .scroll-button {
-    width: 20px;
-    height: 20px;
-    font-size: 1.5rem;
-  }
-  .left-arrow {
-    left: 0;
-  }
-  .right-arrow {
-    right: 0;
-  }
-}
-
-@media and (max-width: 480px) {
-  .horizontal-scroll-container {
-    padding: 0 20px;
   }
 }
