@@ -59,6 +59,15 @@
   margin-left: 0;
 }
 
+.introduction a {
+  text-decoration: none;
+  color: var(--main-color);
+}
+
+.introduction a:hover {
+  color: var(--background-color);
+}
+
 /* Responsive */
 @media screen and (max-width: 768px) {
   .profile-picture {

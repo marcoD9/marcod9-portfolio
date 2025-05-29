@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 0.2rem;
   position: relative; /* Posiziona le frecce in modo assoluto */
   overflow-x: auto;
 }
@@ -31,7 +31,7 @@
   cursor: pointer;
   font-size: 1rem;
   transition: opacity 0.3s ease;
-  margin: 1rem;
+  margin: 0.2rem;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -52,21 +52,4 @@
 
 .right-arrow {
   right: 0;
-}
-
-@media screen and (max-width: 1200px) {
-  .scroll-container {
-    width: 75%;
-  }
-}
-@media screen and (max-width: 1000px) {
-  .scroll-container {
-    width: 70%;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .scroll-container {
-    width: 60%;
-  }
 }
