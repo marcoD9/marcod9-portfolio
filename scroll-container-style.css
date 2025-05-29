@@ -6,6 +6,7 @@
   box-sizing: border-box;
   border-radius: 25px;
   padding: 0 50px; // Larghezza freccia + 10px di padding
+  position: relative;
 }
 
 /* Wrapper delle card */
