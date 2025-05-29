@@ -1,0 +1,21 @@
+/* Testo */
+.card p {
+  width: 50%;
+  color: var(--main-color);
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 1rem;
+}
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .card p {
+    text-align: center;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .card p {
+    font-size: 0.8rem;
+  }
+}
