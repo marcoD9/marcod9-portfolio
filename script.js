@@ -51,73 +51,71 @@ document.addEventListener("DOMContentLoaded", () => {
   const rightArrow = document.querySelector(".right-arrow");
 
   if (!cardsWrapper || !leftArrow || !rightArrow) {
-    console.error(
-      "ERRORE: Uno o più elementi DOM essenziali non sono stati trovati."
-    );
+    console.error("ERROR: One or more elements not found.");
     return;
   }
 
-  // Calcolo della quantità di scroll per ogni clic
-  let scrollAmount = cardsWrapper.clientWidth;
+  let scrollAmount = 0; // Inizializza a 0, verrà aggiornato dopo il caricamento
 
   // Event Listener per la freccia SINISTRA
   leftArrow.addEventListener("click", () => {
-    cardsWrapper.scrollBy({
-      left: -scrollAmount, // Scorri a sinistra della larghezza esatta di una card
-      behavior: "smooth",
-    });
+    cardsWrapper.scrollBy({ left: -scrollAmount, behavior: "smooth" });
   });
 
   // Event Listener per la freccia DESTRA
   rightArrow.addEventListener("click", () => {
-    cardsWrapper.scrollBy({
-      left: scrollAmount, // Scorri a destra della larghezza esatta di una card
-      behavior: "smooth",
-    });
+    cardsWrapper.scrollBy({ left: scrollAmount, behavior: "smooth" });
   });
 
   // Logica per abilitare/disabilitare le frecce in base alla posizione di scroll
   const updateArrowVisibility = () => {
+    const conditionLeft = cardsWrapper.scrollLeft <= 5;
+    const conditionRight =
+      Math.round(cardsWrapper.scrollLeft + cardsWrapper.clientWidth) >=
+      cardsWrapper.scrollWidth - 5;
+
     // Disabilita freccia sinistra se all'inizio dello scroll
-    if (cardsWrapper.scrollLeft <= 5) {
+    if (conditionLeft) {
       leftArrow.disabled = true;
-      leftArrow.style.opacity = "0.5";
-      leftArrow.style.cursor = "not-allowed";
     } else {
       leftArrow.disabled = false;
-      leftArrow.style.opacity = "1";
-      leftArrow.style.cursor = "pointer";
     }
 
     // Disabilita freccia destra se alla fine dello scroll
-    // Usiamo Math.round per gestire possibili differenze di pixel dovute all'arrotondamento
-    if (
-      Math.round(cardsWrapper.scrollLeft + cardsWrapper.clientWidth) >=
-      cardsWrapper.scrollWidth - 5
-    ) {
+    if (conditionRight) {
       rightArrow.disabled = true;
-      rightArrow.style.opacity = "0.5";
-      rightArrow.style.cursor = "not-allowed";
     } else {
       rightArrow.disabled = false;
-      rightArrow.style.opacity = "1";
-      rightArrow.style.cursor = "pointer";
     }
   };
 
+  // Ascolta l'evento di scroll sul wrapper delle card
   cardsWrapper.addEventListener("scroll", updateArrowVisibility);
 
   // Re-calcola scrollAmount quando la finestra viene ridimensionata
   window.addEventListener("resize", () => {
-    scrollAmount = cardsWrapper.clientWidth;
-    updateArrowVisibility(); // Aggiorna anche la visibilità delle frecce
+    scrollAmount = cardsWrapper.clientWidth; // Aggiorna la quantità di scroll
+    updateArrowVisibility(); // E aggiorna la visibilità delle frecce
   });
 
-  // Inizializza lo stato delle frecce al caricamento della pagina
-  updateArrowVisibility();
+  // --- Ricalcola Layout --- //
+  window.addEventListener("load", () => {
+    // Forzare un ricalcolo del layout qui.
+    const forceReflow = cardsWrapper.offsetWidth;
+    setTimeout(() => {
+      scrollAmount = cardsWrapper.clientWidth; // Ricalcola scrollAmount con i valori finali
+      updateArrowVisibility(); // Esegui la prima verifica dello stato delle frecce
+    }, 200);
+
+    // Gestione opacità body (per animazione caricamento)
+    document.body.classList.add("loaded");
+    document.querySelectorAll(".card video").forEach((el) => {
+      el.style.opacity = 1;
+    });
+  });
 });
 
-//-----Fix rendering su dispositivi mobili-------//
+//-----Fix rendering su dispositivi mobili (IntersectionObserver)-------//
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".section");
   const observer = new IntersectionObserver(
@@ -137,26 +135,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     observer.observe(section);
   });
-});
-
-//-------Gestione del caricamento delle immagini e dei video------//
-window.addEventListener("load", () => {
-  // Aggiungi opacità alle immagini e ai video
-  document.querySelectorAll(".card video").forEach((el) => {
-    el.style.opacity = 1;
-  });
-  document.body.style.display = "block";
-  // Aggiungi la classe loaded
-  document.body.classList.add("loaded");
-});
-
-window.addEventListener("load", () => {
-  document.body.style.display = "none";
-  setTimeout(() => {
-    document.body.style.display = "block";
-  }, 0);
-});
-
-window.addEventListener("load", () => {
-  document.body.classList.add("loaded");
 });
