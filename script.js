@@ -59,14 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Event Listener per la freccia SINISTRA
   leftArrow.addEventListener("click", (e) => {
-    e.stopPropagation(); // Per evitare che il video venga riprodotto (bug su mobile)
     cardsWrapper.scrollBy({ left: -scrollAmount, behavior: "smooth" });
   });
 
   // Event Listener per la freccia DESTRA
 
   rightArrow.addEventListener("click", (e) => {
-    e.stopPropagation();
     cardsWrapper.scrollBy({ left: scrollAmount, behavior: "smooth" });
   });
 

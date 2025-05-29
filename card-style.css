@@ -29,17 +29,6 @@
   border: 2px solid var(--main-color);
 }
 
-/* Stili per l'overlay click-catcher */
-.video-overlay-click-catcher {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1; /* Deve essere sopra il video ma sotto le frecce se sono assolute rispetto a un genitore comune */
-  /* Nessun background, è invisibile */
-}
-
 /* Testo */
 .card p {
   width: 30%;
