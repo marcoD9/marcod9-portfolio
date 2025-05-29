@@ -39,6 +39,7 @@
 
 /* Stili per le frecce di scorrimento */
 .scroll-button {
+  margin-bottom: 2rem;
   background-color: var(--main-color);
   color: white;
   border: none;
