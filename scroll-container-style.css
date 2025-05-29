@@ -67,6 +67,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  -webkit-transform: translateY(-50%) translateZ(0);
 }
 
 .scroll-button:disabled {
