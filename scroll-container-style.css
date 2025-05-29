@@ -7,7 +7,7 @@
   border-radius: 25px;
   padding: 0 2rem;
   position: relative; /* *** CRITICO: ESSENZIALE per le frecce posizionate in modo assoluto *** */
-  overflow-x: auto; /* Permette lo scroll orizzontale */
+  border: 2px solid red;
   padding-left: 50px; /* 40px della freccia + 10px di margine */
   padding-right: 50px; /* 40px della freccia + 10px di margine */
 
@@ -55,98 +55,44 @@
   width: 40px;
   height: 40px;
   font-size: 2rem;
-  opacity: 1;
+  opacity: 1 !important; /* Forza opacità a 1 */
   transition: opacity 0.3s ease;
-  /display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   font-size: 1rem;
   transition: opacity 0.3s ease;
-  z-index: 10;
+  z-index: 1000;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%) translateZ(0);
+  background-color: purple !important;
+  color: yellow !important;
+  border: 2px solid limegreen !important;
+}
+
+.left-arrow {
+  left: 0;
+}
+.right-arrow {
+  right: 0;
 }
 
 .scroll-button:disabled {
-  opacity: 0.3; /* Meno visibile quando disabilitato */
+  opacity: 0.3 !important;
   cursor: default;
-  pointer-events: none; /* Non cliccabile quando disabilitato */
+  pointer-events: none;
 }
 
 .scroll-button:hover {
   background-color: rgba(0, 0, 0, 0.4);
 }
-.left-arrow {
-  left: 0;
-}
 
-.right-arrow {
-  right: 0;
-}
 /* Responsive */
 @media and (max-width: 768px) {
   .cards-wrapper {
     height: 70vh;
   }
-}
-
-/* Contenitore principale del carosello (ORIZZONTALE) */
-.horizontal-scroll-container {
-  position: relative; /* ESSENZIALE! Le frecce assolute si posizionano rispetto a questo */
-  overflow-x: auto; /* Permette lo scroll orizzontale */
-  /* Non mettere padding-left/right QUI per ora se vuoi che le frecce siano OUTSIDE the scroll area */
-  /* Se avevi messo padding-left/right qui, prova a rimuoverli per ora */
-
-  /* Regole per nascondere la scrollbar (se vuoi) */
-  -ms-overflow-style: none; /* Per IE ed Edge */
-  scrollbar-width: none; /* Per Firefox */
-  &::-webkit-scrollbar {
-    /* Per Chrome, Safari, Opera */
-    display: none;
-  }
-}
-
-/* Stili per entrambi i bottoni di scroll (sinistra e destra) */
-.scroll-button {
-  position: absolute; /* Posizionamento assoluto */
-  top: 50%; /* Allinea il bordo superiore al centro verticale del genitore */
-  transform: translateY(
-    -50%
-  ); /* Sposta in su del 50% della propria altezza per centrare perfettamente */
-  z-index: 100; /* Assicura che le frecce siano sopra gli altri contenuti */
-
-  /* Stili visivi del bottone */
-  background-color: var(--main-color); /* Colore di sfondo (se definito) */
-  color: white; /* Colore dell'icona */
-  border: none;
-  border-radius: 50%; /* Rende il bottone circolare */
-  width: 40px; /* Larghezza */
-  height: 40px; /* Altezza */
-  display: flex; /* Per centrare l'icona SVG al suo interno */
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  font-size: 2rem; /* Dimensione dell'icona */
-  opacity: 1; /* Assicurati che sia visibile */
-  transition: opacity 0.3s ease;
-}
-
-/* Posizionamento specifico per la freccia sinistra */
-.left-arrow {
-  left: 0; /* Allineata al bordo sinistro del contenitore */
-}
-
-/* Posizionamento specifico per la freccia destra */
-.right-arrow {
-  right: 0; /* Allineata al bordo destro del contenitore */
-}
-
-/* Stili per quando le frecce sono disabilitate (gestiti via JavaScript) */
-.scroll-button:disabled {
-  opacity: 0.3;
-  cursor: default;
-  pointer-events: none;
 }

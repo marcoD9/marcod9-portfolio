@@ -51,50 +51,69 @@ document.addEventListener("DOMContentLoaded", () => {
   const rightArrow = document.querySelector(".right-arrow");
 
   if (!cardsWrapper || !leftArrow || !rightArrow) {
-    console.error(
-      "ERROR: One or more elements (cardsWrapper, arrows) not found."
-    );
+    console.error("ERROR: One or more elements not found.");
     return;
   }
 
-  // Inizializza scrollAmount. Sarà ricalcolato su resize e load.
-  // Inizialmente usiamo clientWidth, che è la larghezza visibile del contenitore.
-  let scrollAmount = cardsWrapper.clientWidth;
+  let scrollAmount = 0; // Inizializza a 0, verrà aggiornato dopo il caricamento
 
   // Event Listener per la freccia SINISTRA
-  leftArrow.addEventListener("click", () => {
+  leftArrow.addEventListener("click", (e) => {
     cardsWrapper.scrollBy({ left: -scrollAmount, behavior: "smooth" });
   });
 
   // Event Listener per la freccia DESTRA
-  rightArrow.addEventListener("click", () => {
+
+  rightArrow.addEventListener("click", (e) => {
     cardsWrapper.scrollBy({ left: scrollAmount, behavior: "smooth" });
   });
+
+  // Logica per abilitare/disabilitare le frecce in base alla posizione di scroll
+  const updateArrowVisibility = () => {
+    const conditionLeft = cardsWrapper.scrollLeft <= 5;
+    const conditionRight =
+      Math.round(cardsWrapper.scrollLeft + cardsWrapper.clientWidth) >=
+      cardsWrapper.scrollWidth - 5;
+
+    // Disabilita freccia sinistra se all'inizio dello scroll
+    if (conditionLeft) {
+      leftArrow.disabled = true;
+    } else {
+      leftArrow.disabled = false;
+    }
+
+    // Disabilita freccia destra se alla fine dello scroll
+    if (conditionRight) {
+      rightArrow.disabled = true;
+    } else {
+      rightArrow.disabled = false;
+    }
+  };
+
+  // Ascolta l'evento di scroll sul wrapper delle card
+  cardsWrapper.addEventListener("scroll", updateArrowVisibility);
 
   // Re-calcola scrollAmount quando la finestra viene ridimensionata
   window.addEventListener("resize", () => {
     scrollAmount = cardsWrapper.clientWidth; // Aggiorna la quantità di scroll
-    // NON CHIAMIAMO updateArrowVisibility qui, perché le frecce saranno sempre abilitate
+    updateArrowVisibility(); // E aggiorna la visibilità delle frecce
   });
 
-  // --- Ricalcola Layout al Caricamento (per assicurare valori corretti) --- //
+  // --- Ricalcola Layout --- //
   window.addEventListener("load", () => {
-    // Questo forza un ricalcolo del layout, utile per assicurarsi che clientWidth sia corretto.
-    // Non strettamente necessario se i tuoi elementi hanno dimensioni fisse o si caricano rapidamente.
+    // Forzare un ricalcolo del layout qui.
     const forceReflow = cardsWrapper.offsetWidth;
     setTimeout(() => {
       scrollAmount = cardsWrapper.clientWidth; // Ricalcola scrollAmount con i valori finali
-      // NON CHIAMIAMO updateArrowVisibility qui
+      updateArrowVisibility(); // Esegui la prima verifica dello stato delle frecce
     }, 200);
 
-    // Gestione opacità body (per animazione caricamento) - mantieni se necessario
+    // Gestione opacità body (per animazione caricamento)
     document.body.classList.add("loaded");
-    // La parte relativa all'opacità dei video non è più necessaria, ora che usi GIF/WebP e il CSS
-    // delle animazioni (se lo riabiliterai per altre sezioni).
+    document.querySelectorAll(".card video").forEach((el) => {
+      el.style.opacity = 1;
+    });
   });
-
-  // La funzione 'updateArrowVisibility' e i relativi listener sono stati RIMOSSI.
-  // Questo fa sì che le frecce siano sempre visibili e cliccabili dal punto di vista JavaScript.
 });
 
 //-----Fix rendering su dispositivi mobili (IntersectionObserver)-------//
