@@ -13,13 +13,11 @@ html {
 body {
   min-height: 100vh; /* Se vuoi che il body sia almeno alto come il viewport */
   height: auto; /* Cruciale: permette al body di crescere */
-  overflow-x: hidden;
 }
 
 .background {
   width: 100%;
   margin: 0 auto;
-  overflow: hidden;
 }
 
 *,
