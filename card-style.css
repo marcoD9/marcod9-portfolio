@@ -20,7 +20,7 @@
 }
 
 /* Stile per il video */
-.card video {
+.card img {
   display: block;
   border-radius: 25px;
   width: 100%;
@@ -61,8 +61,8 @@
 /* Stile per il contenitore del Pokedex*/
 
 #pokedex-video-container {
-  width: 369px;
-  height: 462px;
+  width: 260px;
+  height: 520px;
   overflow: hidden;
   margin: 1rem auto;
   display: flex;
