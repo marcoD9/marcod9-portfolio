@@ -6,6 +6,34 @@ body {
   min-width: 100%;
 }
 
+/*Animazioni*/
+.section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1.2s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.5s ease-in;
+}
+
+body.loaded {
+  display: block; /* Assicurati che il body sia visibile */
+  opacity: 1;
+}
+
 body {
   --main-color: hsl(60, 1.4%, 14.3%);
   --underline-color: rgb(16, 123, 75);
