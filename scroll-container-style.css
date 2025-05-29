@@ -69,13 +69,11 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 .left-arrow {
-  padding: 0.5rem;
-  left: 0rem;
+  left: -1rem;
 }
 
 .right-arrow {
-  padding: 0.5rem;
-  right: 0rem;
+  right: -1rem;
 }
 /* Responsive */
 @media and (max-width: 768px) {
