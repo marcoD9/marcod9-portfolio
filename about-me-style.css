@@ -5,7 +5,7 @@
   text-align: center;
   margin-top: 10rem;
   margin-bottom: 1rem;
-  height: 80vh;
+  height: 100%;
   width: 90vw;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -17,7 +17,7 @@
   border-radius: 25px;
   align-items: center;
   box-shadow: 0 4px 8px var(--shadow-color);
-  height: 80vh;
+  height: 100%;
   margin-bottom: 0.5rem;
 }
 
@@ -28,10 +28,9 @@
 }
 
 /* Contenuto del testo */
-.profile-text {
+.profile-text p {
   text-align: center;
-  font-size: 1.1rem;
-  margin: 1rem;
+  padding: 0.5rem;
 }
 
 /* Responsive */
@@ -39,11 +38,19 @@
   .my-profile {
     margin-top: 5rem;
   }
+
+  .about-me-wrapper {
+    height: clamp(500px, 60vh, 600px);
+  }
+
+  .my-profile {
+    height: clamp(500px, 70vh, 800px);
+  }
 }
 
 @media screen and (max-width: 768px) {
   .about-me-wrapper {
-    height: 65vh;
+    height: clamp(500px, 60vh, 600px);
     flex-direction: column;
   }
 
@@ -52,11 +59,11 @@
     margin-top: 3rem;
     flex-direction: column;
     align-items: center;
+    height: clamp(500px, 70vh, 800px);
   }
 
   .profile-text {
     text-align: center;
-    font-size: 0.9rem;
   }
 
   .section-title {
@@ -66,16 +73,18 @@
 
 @media screen and (max-width: 600px) {
   .about-me-wrapper {
-    height: 55vh;
+    height: clamp(500px, 50vh, 800px);
   }
 }
 
 @media screen and (max-width: 468px) {
-  .my-profile {
-    margin-top: 4rem;
+  .about-me-wrapper {
+    height: clamp(600px, 50vh, 1000px);
   }
-  .profile-text {
-    font-size: 0.8rem;
+
+  .my-profile {
+    height: clamp(500px, 50vh, 1000px);
+    margin-top: 4rem;
   }
 
   .section-title {

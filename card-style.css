@@ -1,22 +1,34 @@
-.videos-container {
-  margin-bottom: 2rem;
-}
-
+/* Wrapper delle card */
 .cards-wrapper {
-  height: 80vh;
+  display: flex;
+  border-radius: 25px;
+  overflow-x: scroll; /* Scorrimento orizzontale */
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory; /* Effetto una card per volta */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  gap: 0; /* Nessun gap tra le card */
+  padding-bottom: 0;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  height: 80vh; /* Altezza fissa per il wrapper */
+  width: 100%; /* Larghezza del wrapper */
 }
 
-/* Stili base */
+.cards-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Stile card */
 .card {
   display: flex;
   height: 100%;
   flex-direction: row;
   align-items: center;
-  padding: 1rem;
   border-radius: 25px;
   width: 100%;
-  overflow: hidden;
   background-color: white;
+  flex-shrink: 0; /* Impedisce alle card di restringersi */
+  scroll-snap-align: start; /* Importante per scroll-snap */
 }
 
 /* Stile per il video */
@@ -25,15 +37,14 @@
   border-radius: 25px;
   width: 100%;
   max-height: 100%;
-  padding: 1rem;
   border: 2px solid var(--main-color);
 }
 
 /* Testo */
 .card p {
-  width: 30%;
+  width: 50%;
   color: var(--main-color);
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 /* Link che contiene il video */
@@ -55,8 +66,8 @@
   overflow: hidden;
   margin: 1rem auto;
   display: flex;
-  justify-content: center; /* Centra gli elementi lungo l'asse principale (orizzontale) */
-  align-items: center; /* Centra gli elementi lungo l'asse incrociato (verticale) */
+  justify-content: center;
+  align-items: center;
 }
 
 #pokedex-video {
@@ -65,36 +76,39 @@
   display: block;
   border: none;
 }
-
 /* Responsive */
-@media screen and (max-width: 768px) {
+/* Range calibrati per rendere le card responsive su molti dispositivi */
+@media screen and (max-width: 1200px) {
   .cards-wrapper {
-    /*Per ridurre lo spazio vuoto nelle card*/
-    height: 65vh;
+    height: clamp(300px, 80vh, 1400px);
   }
 
   .card {
     flex-direction: column;
-    gap: 0.5rem;
-    height: 100%;
-    width: 100%;
+  }
+
+  .card p {
+    width: auto;
+  }
+
+  .card img {
+    border-radius: 25px 25px 0 0;
   }
 }
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1040px) {
   .cards-wrapper {
-    height: 55vh;
+    height: clamp(500px, 60vh, 600px);
   }
 }
 
-@media screen and (max-width: 420px) {
-  #pokedex-video-container {
-    width: 50%;
-    height: auto; /* Altezza automatica per mantenere le proporzioni */
+@media screen and (max-width: 768px) {
+  .cards-wrapper {
+    height: clamp(350px, 50vh, 400px);
   }
+}
 
-  #pokedex-video {
-    width: 100%;
-    height: auto; /* Altezza automatica per mantenere le proporzioni */
+@media screen and (max-width: 468px) {
+  .cards-wrapper {
+    height: clamp(350px, 40vh, 600px);
   }
 }
