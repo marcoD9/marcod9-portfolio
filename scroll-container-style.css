@@ -5,12 +5,8 @@
   align-items: center;
   box-sizing: border-box;
   border-radius: 25px;
-  padding: 0 2rem;
-  position: relative; /* *** CRITICO: ESSENZIALE per le frecce posizionate in modo assoluto *** */
-  border: 2px solid red;
-  padding-left: 50px; /* 40px della freccia + 10px di margine */
-  padding-right: 50px; /* 40px della freccia + 10px di margine */
-
+  padding: 0 40px;
+  position: relative;
   -ms-overflow-style: none; /* Per IE ed Edge */
   scrollbar-width: none; /* Per Firefox */
   &::-webkit-scrollbar {
@@ -33,11 +29,6 @@
   flex-grow: 1; /* Occupare lo spazio rimanente nel flex container */
   height: 80vh;
   box-shadow: 0 4px 6px var(--shadow-color);
-  /* Nascondi la scrollbar (essenziale per questo design) */
-}
-
-.cards-wrapper::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
 }
 
 .card {
@@ -52,10 +43,9 @@
   color: white;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 2rem;
-  opacity: 1 !important; /* Forza opacità a 1 */
+  width: 30px;
+  height: 30px;
+  opacity: 1;
   transition: opacity 0.3s ease;
   display: flex;
   justify-content: center;
@@ -63,14 +53,9 @@
   cursor: pointer;
   font-size: 1rem;
   transition: opacity 0.3s ease;
-  z-index: 1000;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  -webkit-transform: translateY(-50%) translateZ(0);
-  background-color: purple !important;
-  color: yellow !important;
-  border: 2px solid limegreen !important;
 }
 
 .left-arrow {
@@ -81,7 +66,7 @@
 }
 
 .scroll-button:disabled {
-  opacity: 0.3 !important;
+  opacity: 0.3;
   cursor: default;
   pointer-events: none;
 }
