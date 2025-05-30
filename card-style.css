@@ -40,6 +40,10 @@
   border: 2px solid var(--main-color);
 }
 
+#pokedex video {
+  border: none;
+}
+
 /* Testo */
 .card p {
   width: 50%;
@@ -67,6 +71,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
 }
 
 #pokedex-video {
