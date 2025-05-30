@@ -18,7 +18,7 @@
 /* Stili per le frecce di scorrimento */
 .scroll-button {
   background-color: var(--inactive-color);
-  color: white;
+  color: var(--white-color);
   border: none;
   border-radius: 50%;
   width: 30px;
@@ -33,6 +33,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  padding: 0;
 }
 
 .scroll-button:disabled {
@@ -45,11 +46,19 @@
   background-color: var(--active-color);
 }
 .left-arrow {
-  left: 0;
+  left: 1rem;
 }
 
 .right-arrow {
-  right: 0;
+  right: 1rem;
+}
+
+/* Stile frecce */
+.scroll-button svg {
+  display: block;
+  max-width: 20px;
+  max-height: 20px;
+  margin: auto;
 }
 
 /* Nascondi le frecce sui dispositivi touch */
