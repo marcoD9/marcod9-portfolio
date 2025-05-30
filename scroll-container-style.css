@@ -59,7 +59,7 @@
   }
 }
 
-/* Mostra le frecce sui dispositivi desktop (opzionale, ma buona pratica per chiarezza) */
+/* Mostra le frecce sui dispositivi desktop*/
 @media (pointer: fine) {
   .scroll-button {
     display: block; /* Assicurati che siano visibili */
