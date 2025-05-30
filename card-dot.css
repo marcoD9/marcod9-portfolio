@@ -9,10 +9,12 @@
 .dot {
   /* Nome della classe dal tuo HTML */
   display: inline-block; /* Li mette in linea */
-  width: 12px; /* Larghezza del pallino */
-  height: 12px; /* Altezza del pallino */
+  width: 15px; /* Larghezza del pallino */
+  height: 15px; /* Altezza del pallino */
   margin: 0 5px; /* Spazio tra i pallini */
-  background-color: #bbb; /* Colore di default per i pallini inattivi */
+  background-color: var(
+    --inactive-color
+  ); /* Colore di default per i pallini inattivi */
   border-radius: 50%; /* Rende il pallino circolare */
   opacity: 0.5; /* Inizialmente semi-trasparente */
   transition: opacity 0.3s ease, background-color 0.3s ease; /* Transizione fluida */
@@ -20,7 +22,9 @@
 
 /* Stile per il pallino attivo */
 .dot.active {
-  background-color: #717171; /* Colore più scuro per il pallino attivo */
+  background-color: var(
+    --active-color
+  ); /* Colore più scuro per il pallino attivo */
   opacity: 1; /* Completamente opaco */
 }
 

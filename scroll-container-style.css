@@ -17,7 +17,7 @@
 }
 /* Stili per le frecce di scorrimento */
 .scroll-button {
-  background-color: var(--main-color);
+  background-color: var(--inactive-color);
   color: white;
   border: none;
   border-radius: 50%;
@@ -36,13 +36,13 @@
 }
 
 .scroll-button:disabled {
-  opacity: 0.3; /* Meno visibile quando disabilitato */
+  opacity: 0.6; /* Meno visibile quando disabilitato */
   cursor: default;
   pointer-events: none; /* Non cliccabile quando disabilitato */
 }
 
 .scroll-button:hover {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: var(--active-color);
 }
 .left-arrow {
   left: 0;
