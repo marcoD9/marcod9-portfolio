@@ -7,7 +7,7 @@
     to bottom,
     rgb(207, 205, 191),
     rgb(207, 206, 201),
-    rgb(251, 251, 251)
+    rgba(230, 228, 228, 0.93)
   );
   width: 100vw;
   height: auto; /* Permette al contenitore di adattarsi all'altezza del contenuto */
