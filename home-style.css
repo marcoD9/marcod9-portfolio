@@ -12,7 +12,7 @@
   width: 100vw;
   height: auto; /* Permette al contenitore di adattarsi all'altezza del contenuto */
   padding: 1rem 0;
-  box-sizing: border-box; /* Importante per includere padding nei calcoli di larghezza/altezza */
+  box-sizing: border-box;
 }
 
 /* Immagine */
@@ -61,11 +61,11 @@
 
 .introduction a {
   text-decoration: none;
-  color: var(--main-color);
+  color: var(--background-color);
 }
 
 .introduction a:hover {
-  color: var(--background-color);
+  color: var(--underline-color);
 }
 
 /* Responsive */
