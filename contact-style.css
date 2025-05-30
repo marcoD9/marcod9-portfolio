@@ -9,6 +9,8 @@
   background-color: var(--secondary-color);
   text-align: center;
   margin-top: 1rem;
+  grid-template-rows: auto; /* Permette alle righe di adattarsi al contenuto */
+  align-items: stretch;
 }
 
 .email-link {
