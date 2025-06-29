@@ -1,6 +1,6 @@
 "use strict";
 
-//-----------Animazioni----------//
+//-----------Animations----------//
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".section");
 
@@ -8,54 +8,54 @@ document.addEventListener("DOMContentLoaded", () => {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("visible"); // Aggiunge la classe quando l'elemento è visibile
+          entry.target.classList.add("visible"); // Adds the class when the element is visible
         } else {
-          entry.target.classList.remove("visible"); // Rimuove la classe quando l'elemento non è più visibile
+          entry.target.classList.remove("visible"); // Removes the class when the element is no longer visible
         }
       });
     },
-    { threshold: 0.15 } // 15% dell'elemento visibile
+    { threshold: 0.15 } // 15% of the element
   );
 
   sections.forEach((section) => observer.observe(section));
 });
 
-//------------Gestione navigazione con la navbar----------//
+//------------Navigation handling with the navbar----------//
 document.addEventListener("DOMContentLoaded", () => {
-  // Seleziona tutti i link della navbar che puntano a sezioni interne
+  // Select all navbar links that point to internal sections
   const navLinks = document.querySelectorAll('a[href^="#"]');
 
-  // Aggiungi un evento click su ogni link della navbar
+  // Add a click event to each navbar link
   navLinks.forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
-      e.preventDefault(); // Impedisce il comportamento di navigazione predefinito
+      e.preventDefault(); // Prevents the default navigation behavior
 
       const targetId = this.getAttribute("href").substring(1);
       const targetElement = document.getElementById(targetId);
 
       if (targetElement) {
-        // Aggiungi un offset di 50px
+        // Add an offset of 50px
         window.scrollTo({
           top: targetElement.offsetTop - 50,
-          behavior: "smooth", // Scorrimento fluido
+          behavior: "smooth", // Smooth scrolling
         });
       }
     });
   });
 });
 
-//-----------Gestione delle frecce per lo scroll orizzontale delle cards e dots----------//
+//-----------Handling arrows for horizontal card scroll and dots----------//
 document.addEventListener("DOMContentLoaded", () => {
   const cardsWrapper = document.querySelector(".cards-wrapper");
   const leftArrow = document.querySelector(".left-arrow");
   const rightArrow = document.querySelector(".right-arrow");
   const dotsContainer = document.querySelector(".dots-container");
 
-  let slides = []; // Array per contenere tutte le card
-  let dots = []; // Array per contenere tutti i pallini
-  let currentSlideIndex = 0; // L'indice della card attualmente visibile
+  let slides = []; // Array to hold all cards
+  let dots = []; // Array to hold all dots
+  let currentSlideIndex = 0; // The index of the currently visible card
 
-  // Controllo robusto che tutti gli elementi necessari siano presenti
+  // Robust check that all required elements are present
   if (!cardsWrapper || !leftArrow || !rightArrow || !dotsContainer) {
     console.error(
       "ERROR: One or more carousel elements not found. Check your HTML classes/IDs."
@@ -63,25 +63,25 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // --- Funzione per aggiornare lo stato 'active' sui pallini ---
+  // --- Function to update the 'active' state on dots ---
   function updateActiveDot() {
-    // Rimuovi la classe 'active' da tutti i pallini
+    // Remove the 'active' class from all dots
     dots.forEach((dot) => dot.classList.remove("active"));
 
-    // Aggiungi la classe 'active' al pallino corrispondente alla card attiva
-    // Usiamo l'ID della card attiva per trovare il pallino corrispondente tramite il suo ID
+    // Add the 'active' class to the dot corresponding to the active card
+    // Use the ID of the active card to find the corresponding dot by its ID
     if (slides[currentSlideIndex]) {
       const activeCardId = slides[currentSlideIndex].id;
-      const activeDot = document.getElementById(`${activeCardId}-dot`); // Trova il pallino con l'ID corretto
+      const activeDot = document.getElementById(`${activeCardId}-dot`); // Find the dot with the correct ID
       if (activeDot) {
         activeDot.classList.add("active");
       }
     }
   }
 
-  // --- Funzione per aggiornare la posizione del carosello e gli indicatori ---
+  // --- Function to update carousel position and indicators ---
   function updateCarouselPosition() {
-    // Clamping dell'indice per assicurarsi che rimanga nei limiti
+    // Clamp the index to ensure it stays within bounds
     if (currentSlideIndex < 0) {
       currentSlideIndex = 0;
     }
@@ -89,29 +89,29 @@ document.addEventListener("DOMContentLoaded", () => {
       currentSlideIndex = slides.length - 1;
     }
 
-    // Calcola la posizione di scroll per la card corrente
+    // Calculate the scroll position for the current card
     const targetScrollLeft = slides[currentSlideIndex].offsetLeft;
     cardsWrapper.scrollTo({ left: targetScrollLeft, behavior: "smooth" });
 
-    // Aggiorna lo stato visivo delle frecce e dei pallini
+    // Update the visual state of arrows and dots
     updateActiveCardAndArrows();
   }
 
-  // Event Listener per la freccia SINISTRA
+  // Event Listener for the LEFT arrow
   leftArrow.addEventListener("click", () => {
-    currentSlideIndex--; // Decrementa l'indice della slide
-    updateCarouselPosition(); // Applica lo spostamento e aggiorna gli indicatori
+    currentSlideIndex--; // Decrement the slide index
+    updateCarouselPosition(); // Apply the movement and update indicators
   });
 
-  // Event Listener per la freccia DESTRA
+  // Event Listener for the RIGHT arrow
   rightArrow.addEventListener("click", () => {
-    currentSlideIndex++; // Incrementa l'indice della slide
-    updateCarouselPosition(); // Applica lo spostamento e aggiorna gli indicatori
+    currentSlideIndex++; // Increment the slide index
+    updateCarouselPosition(); // Apply the movement and update indicators
   });
 
-  // Funzione per determinare la card attualmente visibile e gestire frecce/pallini
+  // Function to determine the currently visible card and handle arrows/dots
   const updateActiveCardAndArrows = () => {
-    // Trova la slide attualmente più visibile nel wrapper
+    // Find the slide currently most visible in the wrapper
     let nearestSlideIndex = 0;
     let minDistance = Infinity;
 
@@ -128,11 +128,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    currentSlideIndex = nearestSlideIndex; // Aggiorna l'indice della slide corrente
+    currentSlideIndex = nearestSlideIndex; // Update the current slide index
 
-    updateActiveDot(); // Chiama la funzione per aggiornare i pallini in base al nuovo indice
+    updateActiveDot(); // Call the function to update the dots based on the new index
 
-    // Logica per disabilitare/abilitare le frecce in base ai bordi dello scroll
+    // Logic to disable/enable arrows based on scroll edges
     const isAtStart = cardsWrapper.scrollLeft <= 5;
     const isAtEnd =
       Math.round(cardsWrapper.scrollLeft + cardsWrapper.clientWidth) >=
@@ -142,37 +142,37 @@ document.addEventListener("DOMContentLoaded", () => {
     rightArrow.disabled = isAtEnd;
   };
 
-  // Ascolta l'evento di scroll sul wrapper delle card
+  // Listen to the scroll event on the cards wrapper
   cardsWrapper.addEventListener("scroll", updateActiveCardAndArrows);
 
-  // Al ridimensionamento della finestra, ricalcola e riallinea la card corrente
+  // On window resize, recalculate and realign the current card
   window.addEventListener("resize", () => {
     updateCarouselPosition();
   });
 
-  // --- Inizializzazione al caricamento della pagina ---
+  // --- Initialization on page load ---
   window.addEventListener("load", () => {
-    // Popola l'array 'slides' con tutte le card
+    // Populate the 'slides' array with all cards
     slides = Array.from(document.querySelectorAll(".cards-wrapper .card"));
-    // Popola l'array 'dots' con tutti i pallini
+    // Populate the 'dots' array with all dots
     dots = Array.from(document.querySelectorAll(".dots-container .dot"));
 
-    // Forzare un ricalcolo del layout
+    // Force a layout recalculation
     const forceReflow = cardsWrapper.offsetWidth;
 
-    // Aggiungi un piccolo ritardo per dare tempo al browser di calcolare tutte le dimensioni
+    // Add a small delay to give the browser time to calculate all dimensions
     setTimeout(() => {
-      updateCarouselPosition(); // Posiziona il carosello sulla prima slide e aggiorna lo stato iniziale
+      updateCarouselPosition(); // Position the carousel on the first slide and update the initial state
     }, 50);
 
-    // Gestione opacità body (per animazione caricamento)
+    // Handle body opacity (for loading animation)
     document.body.classList.add("loaded");
     document.querySelectorAll(".card video").forEach((el) => {
       el.style.opacity = 1;
     });
   });
 });
-//-----Fix rendering su dispositivi mobili (IntersectionObserver)-------//
+//-----Fix rendering on mobile devices (IntersectionObserver)-------//
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".section");
   const observer = new IntersectionObserver(
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { threshold: 0.15 }
   );
-  // Controlla manualmente se gli elementi sono già visibili al caricamento
+  // Manually check if elements are already visible on load
   sections.forEach((section) => {
     if (section.getBoundingClientRect().top < window.innerHeight) {
       section.classList.add("visible");

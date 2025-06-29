@@ -10,29 +10,29 @@
     rgba(230, 228, 228, 0.93)
   );
   width: 100vw;
-  height: auto; /* Permette al contenitore di adattarsi all'altezza del contenuto */
+  height: auto; /* Allows the container to adapt to the content height */
   padding: 1rem 0;
   box-sizing: border-box;
   box-shadow: 0 4px 8px var(--shadow-color);
 }
 
-/* Immagine */
+/* Image */
 .image-wrapper {
   display: flex;
   align-items: flex-end;
-  justify-content: flex-end; /* Mantiene l'immagine a destra nel suo wrapper */
-  width: auto; /* Permette al wrapper di adattarsi all'immagine */
+  justify-content: flex-end; /* Keeps the image aligned to the right within its wrapper */
+  width: auto; /* Allows the wrapper to adapt to the image size */
 }
 
 .profile-picture {
   object-fit: cover;
   border: 2px solid var(--main-color);
-  /* Sizing responsive per schermi grandi */
+  /* Responsive sizing for large screens */
   width: clamp(
     150px,
     30vw,
     300px
-  ); /* Min 150px, fluido 30% della viewport width, Max 300px */
+  ); /* Min 150px, fluid 30% of viewport width, Max 300px */
   height: clamp(150px, 30vw, 300px);
   max-width: 100%;
   display: block;
@@ -40,16 +40,16 @@
   margin-rigth: 0.3rem;
 }
 
-/* Testo */
+/* Text */
 .home-text {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Allinea a sinistra */
-  justify-content: center; /* Centra verticalmente il testo nel suo spazio */
-  text-align: left; /* Allinea il testo effettivo a sinistra */
+  align-items: flex-start; /* Aligns to the left */
+  justify-content: center; /* Vertically centers the text in its space */
+  text-align: left; /* Aligns the actual text to the left */
   padding-left: 0.3rem;
-  padding-right: 0.3rem; /* Indentazione del testo */
+  padding-right: 0.3rem; /* Text indentation */
 }
 
 .name {
@@ -102,7 +102,6 @@
   .image-wrapper {
     width: 100%;
     justify-content: center;
-
     margin-bottom: 1.5rem;
   }
 

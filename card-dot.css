@@ -1,22 +1,22 @@
-/* Stili per il contenitore dei pallini */
+/* Dots Container Style */
 .dots-container {
   text-align: center;
   margin-top: 20px;
 }
 
-/* Stili base per ogni dot */
+/* Dots Style */
 .dot {
-  display: inline-block; /* Li mette in linea */
+  display: inline-block; /* Display inline-block for proper alignment */
   width: 0.8em;
   height: 0.8em;
   margin: 0 0.3rem;
   background-color: var(--inactive-color);
   border-radius: 50%;
-  opacity: 0.5; /* Inizialmente semi-trasparente */
-  transition: opacity 0.3s ease, background-color 0.3s ease; /* Transizione fluida */
+  opacity: 0.5; /* Opacity for inactive dots */
+  transition: opacity 0.3s ease, background-color 0.3s ease; /*Transition */
 }
 
-/* Stile per il pallino attivo */
+/* Active Dot Style */
 .dot.active {
   background-color: var(--active-color);
   opacity: 1;

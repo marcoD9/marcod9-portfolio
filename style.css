@@ -6,10 +6,11 @@ body {
   min-width: 100%;
   background: var(
     --background-color
-  ); /*Per impostare il background in modalità landscape per mobile*/
+  ); /* Set background for mobile landscape mode */
 }
 
 body {
+  /* Color and style variables */
   --main-color: hsl(60, 1.4%, 14.3%);
   --underline-color: rgb(16, 123, 75);
   --shadow-color: hsl(0, 10%, 8%);
@@ -36,7 +37,7 @@ body {
   background: var(--background-color);
 }
 
-/*Animazioni*/
+/* Animations for section appearance */
 .section {
   opacity: 0;
   transform: translateY(50px);
@@ -48,11 +49,13 @@ body {
   transform: translateY(0);
 }
 
+/* Utility class for visibility */
 .visible {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Hide body by default and fade in when loaded */
 body {
   opacity: 0;
   display: none;
@@ -60,10 +63,11 @@ body {
 }
 
 body.loaded {
-  display: block; /* Assicurati che il body sia visibile */
+  display: block; /* Ensure body is visible */
   opacity: 1;
 }
 
+/* Responsive adjustments for mobile */
 @media (max-width: 768px) {
   body {
     line-height: 1.3;

@@ -11,8 +11,10 @@ html {
 }
 
 body {
-  min-height: 100vh; /* Se vuoi che il body sia almeno alto come il viewport */
-  height: auto; /* Cruciale: permette al body di crescere */
+  /* Ensure the body is at least as tall as the viewport */
+  min-height: 100vh;
+  /* Allow the body to grow with its content */
+  height: auto;
   overflow-x: hidden;
 }
 

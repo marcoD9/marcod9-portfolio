@@ -1,4 +1,4 @@
-/* Contenitore principale */
+/* Main container */
 .projects-container {
   width: 100vw;
   height: 100%;
@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative; /* Posiziona le frecce in modo assoluto */
+  position: relative; /* Positions arrows absolutely */
   overflow-x: auto;
 }
 
@@ -15,7 +15,7 @@
   border-radius: 25px;
   width: 90%;
 }
-/* Stili per le frecce di scorrimento */
+/* Styles for scroll arrows */
 .scroll-button {
   background-color: var(--inactive-color);
   color: var(--white-color);
@@ -37,9 +37,9 @@
 }
 
 .scroll-button:disabled {
-  opacity: 0.6; /* Meno visibile quando disabilitato */
+  opacity: 0.6; /* Less visible when disabled */
   cursor: default;
-  pointer-events: none; /* Non cliccabile quando disabilitato */
+  pointer-events: none; /* Not clickable when disabled */
 }
 
 .scroll-button:hover {
@@ -53,7 +53,7 @@
   right: 1rem;
 }
 
-/* Stile frecce */
+/* Arrow icon style */
 .scroll-button svg {
   display: block;
   max-width: 20px;
@@ -61,16 +61,16 @@
   margin: auto;
 }
 
-/* Nascondi le frecce sui dispositivi touch */
+/* Hide arrows on touch devices */
 @media (pointer: coarse) {
   .scroll-button {
     display: none;
   }
 }
 
-/* Mostra le frecce sui dispositivi desktop*/
+/* Show arrows on desktop devices */
 @media (pointer: fine) {
   .scroll-button {
-    display: block; /* Assicurati che siano visibili */
+    display: block; /* Ensure they are visible */
   }
 }

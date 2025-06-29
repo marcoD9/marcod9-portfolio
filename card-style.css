@@ -1,24 +1,24 @@
-/* Wrapper delle card */
+/* Cards Wrapper*/
 .cards-wrapper {
   display: flex;
   border-radius: 25px;
-  overflow-x: scroll; /* Scorrimento orizzontale */
+  overflow-x: scroll; /* Horizontal scroll for cards */
   overflow-y: hidden;
-  scroll-snap-type: x mandatory; /* Effetto una card per volta */
+  scroll-snap-type: x mandatory; /* Mandatory horizontal snap */
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  gap: 0; /* Nessun gap tra le card */
+  gap: 0; /* No gap between cards */
   padding-bottom: 0;
   box-shadow: 0 4px 8px var(--shadow-color);
-  height: 80vh; /* Altezza fissa per il wrapper */
-  width: 100%; /* Larghezza del wrapper */
+  height: 80vh; /* Fixed height */
+  width: 100%; /* Full width */
 }
 
 .cards-wrapper::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
 
-/* Stile card */
+/* Card Style */
 .card {
   display: flex;
   height: 100%;
@@ -27,11 +27,11 @@
   border-radius: 25px;
   width: 100%;
   background-color: var(--white-color);
-  flex-shrink: 0; /* Impedisce alle card di restringersi */
-  scroll-snap-align: start; /* Importante per scroll-snap */
+  flex-shrink: 0; /* Prevent card to shrink */
+  scroll-snap-align: start; /* Align each card to the start of the scroll container */
 }
 
-/* Stile per il video */
+/* Video Style */
 .card video {
   display: block;
   border-radius: 25px;
@@ -40,14 +40,14 @@
   border: 2px solid var(--main-color);
 }
 
-/* Testo */
+/* Text */
 .card p {
   width: 50%;
   color: var(--main-color);
   padding: 0.5rem;
 }
 
-/* Link che contiene il video */
+/* Card Link */
 .card a {
   text-decoration: none;
   color: inherit;
@@ -57,11 +57,11 @@
   align-items: center;
 }
 
-/* --------------------------Stili per Pokedex ----------------------------------------*/
-/* Stile per il contenitore del Pokedex*/
+/* --------------------------Pokedex ----------------------------------------*/
+/* Pokedex Container Style*/
 
 #pokedex {
-  flex-direction: column; /*Pokedex card sempre in colonna*/
+  flex-direction: column; /* Always stack video and text vertically */
 }
 
 #pokedex video {
@@ -84,7 +84,7 @@
   display: block;
 }
 /* Responsive */
-/* Range calibrati per rendere le card responsive su molti dispositivi */
+/* Range to target many devices (responsive breakpoints below) */
 @media screen and (max-width: 1200px) {
   .cards-wrapper {
     height: clamp(600px, 80vh, 1400px);
@@ -103,7 +103,7 @@
   }
 
   #pokedex video {
-    /*Manteniamo lo stesso border-radius*/
+    /*Same border-radius*/
     border-radius: 25px;
   }
 }

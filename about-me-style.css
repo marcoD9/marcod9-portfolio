@@ -1,4 +1,4 @@
-/* Descrizione */
+/* Description */
 .my-profile {
   display: flex;
   flex-direction: column;
@@ -21,13 +21,13 @@
   margin-bottom: 0.5rem;
 }
 
-/* Titolo */
+/* Title */
 .section-title {
   font-size: 2.3rem;
   margin-bottom: 3rem;
 }
 
-/* Contenuto del testo */
+/* Text Content */
 .profile-text p {
   text-align: center;
   padding: 0.5rem;

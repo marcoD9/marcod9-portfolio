@@ -9,24 +9,24 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
   background-color: var(--secondary-color);
-  text-align: center; /* Allinea il testo al centro */
+  text-align: center; /* Center the text */
 }
 
 a:active {
   color: var(--underline-color);
 }
 
-/* Seleziona specificamente il link "Home" */
+/* Selects specifically the "Home" link */
 .home-link {
   grid-area: home;
   color: var(--main-color);
   text-decoration: none;
   border: solid black;
   padding: 0.5rem;
-  border-width: 2px 1px 2px 2px; /* Per avere 2px nel bordo condiviso */
+  border-width: 2px 1px 2px 2px; /* 2px on the shared border */
 }
 
-/* Seleziona specificamente il link "Projects" */
+/* Selects specifically the "Projects" link */
 .projects-link {
   grid-area: projects;
   color: var(--main-color);
@@ -36,7 +36,7 @@ a:active {
   border-width: 2px 1px 2px 1px;
 }
 
-/* Seleziona specificamente il link "About Me" */
+/* Selects specifically the "About Me" link */
 .about-link {
   grid-area: about;
   color: var(--main-color);
